@@ -5,6 +5,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 class CalculationsTest {
 
     static Calculations calculations;
@@ -21,8 +24,9 @@ class CalculationsTest {
         double biomassCoefficient = 1.45;
         double parameter_f2 = 0;
 
-        int result = calculations.calculate_EEI(nominalEfficiency, biomassCoefficient, parameter_f2);
+        double eei = calculations.calculate_EEI(nominalEfficiency, biomassCoefficient, parameter_f2);
+        System.out.println(eei);
 
-        Assertions.assertEquals(106, result);
+        Assertions.assertEquals(106.10, eei, 0.01);
     }
 }

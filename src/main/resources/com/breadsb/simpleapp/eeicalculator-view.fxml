@@ -4,33 +4,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" fillWidth="true" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.breadsb.simpleapp.HelloController">
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.breadsb.simpleapp.EEICalculatorController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <Pane fx:id="centeredPane" prefHeight="53.0">
-      <children>
-          <Label alignment="CENTER" layoutY="15.0" prefHeight="20.0" prefWidth="125.0" text="Sprawność nominalna:" textAlignment="CENTER" />
-          <TextField layoutX="126.0" layoutY="12.0" prefHeight="25.0" prefWidth="71.0" />
-      </children>
+    <Pane prefHeight="53.0">
+        <Label alignment="CENTER" layoutY="15.0" prefHeight="20.0" prefWidth="125.0" text="Sprawność nominalna:"
+               textAlignment="CENTER"/>
+        <TextField fx:id="nominalefficiencyfield" layoutX="126.0" layoutY="12.0" prefHeight="25.0" prefWidth="71.0"/>
     </Pane>
     <Pane prefHeight="53.0">
-        <children>
-            <Label alignment="CENTER" layoutY="15.0" prefHeight="20.0" prefWidth="125.0" text="Współczynnik biomasy" textAlignment="CENTER" />
-            <TextField layoutX="126.0" layoutY="12.0" prefHeight="25.0" prefWidth="71.0" />
-        </children>
+        <Label alignment="CENTER" layoutY="15.0" prefHeight="20.0" prefWidth="125.0" text="Współczynnik biomasy"
+               textAlignment="CENTER"/>
+        <TextField fx:id="biomasscoefficientfield" layoutX="126.0" layoutY="12.0" prefHeight="25.0" prefWidth="71.0"/>
     </Pane>
     <Pane prefHeight="53.0">
-        <children>
-            <Label alignment="CENTER" layoutY="15.0" prefHeight="20.0" prefWidth="125.0" text="Parametr F2" textAlignment="CENTER" />
-            <TextField layoutX="126.0" layoutY="12.0" prefHeight="25.0" prefWidth="71.0" />
-        </children>
+        <Label alignment="CENTER" layoutY="15.0" prefHeight="20.0" prefWidth="125.0" text="Parametr F2"
+               textAlignment="CENTER"/>
+        <TextField fx:id="parameterF2Field" layoutX="126.0" layoutY="12.0" prefHeight="25.0" prefWidth="71.0"/>
     </Pane>
     <Button onAction="#onCalculateButtonClick" text="Calculate" />
-   <Pane prefHeight="25.0">
-      <children>
-          <Label layoutX="22.0" text="Współczynnik EEI: " />
-          <Label layoutX="142.0" prefHeight="17.0" prefWidth="30.0" text="0" />
-      </children>
-   </Pane>
+    <Pane prefHeight="25.0">
+        <Label layoutX="22.0" text="Współczynnik EEI: "/>
+        <Label fx:id="eeitext" layoutX="142.0" prefHeight="17.0" prefWidth="30.0"/>
+    </Pane>
 </VBox>
