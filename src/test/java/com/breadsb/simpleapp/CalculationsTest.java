@@ -26,4 +26,12 @@ class CalculationsTest {
 
         Assertions.assertEquals(106.10, eei, 0.01);
     }
+
+    @Test
+    @DisplayName("Convert Comma to Dot")
+    void givenString_whenConvertCommaToDot_thenReturnString() {
+        String given = "1,27";
+        String result = calculations.convertCommaToDot(given);
+        Assertions.assertEquals("1.27", result);
+    }
 }
