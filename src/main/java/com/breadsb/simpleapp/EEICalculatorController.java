@@ -22,8 +22,9 @@ public class EEICalculatorController {
 
             double result = calculations.calculate_EEI(nominalEfficiencyValue, biomassEfficientValue, parameterF2Value);
             eeitext.setText(String.format("%.2f", result));
-        } catch (IOException e) {
-            eeitext.setText("Wrong value");
+        } catch (NumberFormatException e) {
+            eeitext.setText("Wrong input value");
+            System.out.println(e.getMessage());
         }
     }
 }

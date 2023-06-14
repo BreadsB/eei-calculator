@@ -21,9 +21,9 @@ public class Calculations {
                 + parametrF2);
     }
 
-    public double check_ifTextFieldNotEmpty_returnCommaConvertion(TextField textField) throws IOException {
+    public double check_ifTextFieldNotEmpty_returnCommaConvertion(TextField textField) throws NumberFormatException {
         if (textField.getText().isBlank() || textField.getText().matches("[[:alpha:]]+")) {
-            throw new IOException();
+            throw new NumberFormatException();
         }
         return convertTextFieldToDouble(textField.getText());
     }
