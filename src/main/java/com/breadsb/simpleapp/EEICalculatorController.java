@@ -13,25 +13,12 @@ public class EEICalculatorController {
 
     @FXML
     protected void onCalculateButtonClick() {
-        // take input values and convert , with .
-        String nominalEfficiencyValue = nominalefficiencyfield.getText();
-        String biomassCoefficientValue = biomasscoefficientfield.getText();
-        String parameterF2Value = parameterF2Field.getText();
+        double nominalEfficiencyValue = calculations.convertTextFieldToDouble(nominalefficiencyfield.getText());
+        double biomassEfficientValue = calculations.convertTextFieldToDouble(biomasscoefficientfield.getText());
+        double parameterF2Value = calculations.convertTextFieldToDouble(parameterF2Field.getText());
 
-        String nominalEfficiencyValueConverted = nominalEfficiencyValue.replace(",", ".");
-        String biomassCoefficientValueConverted = biomassCoefficientValue.replace(",", ".");
-        String parameterF2ValueConverted = parameterF2Value.replace(",", ".");
-
-        // take input values and calculate eei
-        double nominalEfficiencyValue2 = Double.parseDouble(nominalEfficiencyValueConverted);
-        double biomassEfficientValue2 = Double.parseDouble(biomassCoefficientValueConverted);
-        double parameterF2Value2 = Double.parseDouble(parameterF2ValueConverted);
-
-        System.out.println(nominalEfficiencyValue2 + " " + biomassEfficientValue2 + " " + parameterF2Value2);
-
-        double result = calculations.calculate_EEI(nominalEfficiencyValue2, biomassEfficientValue2, parameterF2Value2);
+        double result = calculations.calculate_EEI(nominalEfficiencyValue, biomassEfficientValue, parameterF2Value);
 
         eeitext.setText(String.format("%.2f", result));
-        System.out.println(result);
     }
 }

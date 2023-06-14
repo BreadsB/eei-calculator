@@ -5,9 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-
 class CalculationsTest {
 
     static Calculations calculations;
