@@ -4,29 +4,37 @@ import javafx.scene.control.TextField;
 
 public class Calculations {
 
-    public String convertCommaToDot(String text) {
+    public String convertCommaToDot(String text) { //tested
         return text.replace(",", ".");
     }
 
-    public double convertTextFieldToDouble(String textField) {
+    public double convertTextFieldToDouble(String textField) { //tested
         String converted = convertCommaToDot(textField);
         return Double.parseDouble(converted);
     }
 
-    public double calculate_EEI(double sprawnoscNominalna, double wspolczynnikBiomasy, double parametrF2) {
-        return ((sprawnoscNominalna * wspolczynnikBiomasy)
-                - ( 0.1*( sprawnoscNominalna*wspolczynnikBiomasy ) )
-                + parametrF2);
+    public double calculate_EEI(double nominalEfficiency, double biomassCoefficient, double f2param) { //tested
+        return ((nominalEfficiency * biomassCoefficient)
+                - ( 0.1*( nominalEfficiency * biomassCoefficient ) )
+                + f2param);
     }
 
-    public double check_ifTextFieldNotEmpty_returnCommaConvertion(TextField textField) throws NumberFormatException {
+    public double calculateEEIValueFromTextField (TextField nominalEfficiency, TextField biomassCoefficient, TextField f2param) {
+        double nominalEfficiencyValue = check_ifTextFieldNotEmpty_returnCommaConversion(nominalEfficiency);
+        double biomassCoefficientValue = check_ifTextFieldNotEmpty_returnCommaConversion(biomassCoefficient);
+        double f2ParamValue = check_ifTextFieldNotEmpty_returnCommaConversion(f2param);
+
+        return calculate_EEI(nominalEfficiencyValue, biomassCoefficientValue, f2ParamValue);
+    }
+
+    public double check_ifTextFieldNotEmpty_returnCommaConversion(TextField textField) throws NumberFormatException { // tested
         if (textField.getText().isBlank() || textField.getText().matches("[[:alpha:]]+")) {
             throw new NumberFormatException();
         }
         return convertTextFieldToDouble(textField.getText());
     }
 
-    public EnergeticClass checkEnergeticEfficiencyClass(double EEI_Value) {
+    public EnergeticClass checkEnergeticEfficiencyClass(double EEI_Value) { //tested
         if(42.0 > EEI_Value) {
             return new EnergeticClass("G", Color.G_CLASS_COLOR);
         } else if (62.0 > EEI_Value) {

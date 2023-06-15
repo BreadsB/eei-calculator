@@ -14,7 +14,7 @@
          <HBox alignment="CENTER" maxHeight="30.0" maxWidth="300.0">
             <children>
                  <Label alignment="CENTER" prefWidth="150.0" text="Sprawność nominalna" textAlignment="CENTER" />
-                 <TextField fx:id="nominalefficiencyfield" maxWidth="150.0" prefHeight="25.0" prefWidth="150.0" />
+                 <TextField fx:id="nominalEfficiencyField" maxWidth="150.0" prefHeight="25.0" prefWidth="150.0" />
             </children>
          </HBox>
       </children>
@@ -24,7 +24,7 @@
          <HBox alignment="CENTER" maxHeight="30.0" maxWidth="300.0">
             <children>
                  <Label alignment="CENTER" prefWidth="150.0" text="Współczynnik biomasy" textAlignment="CENTER" />
-                 <TextField fx:id="biomasscoefficientfield" maxWidth="150.0" prefHeight="25.0" prefWidth="150.0" />
+                 <TextField fx:id="biomassCoefficientField" maxWidth="150.0" prefHeight="25.0" prefWidth="150.0" />
             </children>
          </HBox>
       </children>
@@ -52,7 +52,7 @@
                      <Insets />
                   </HBox.margin>
                </Label>
-                 <Label fx:id="eeitext" alignment="CENTER" contentDisplay="CENTER" maxHeight="20.0" maxWidth="100.0" prefHeight="20.0" prefWidth="100.0">
+                 <Label fx:id="eeiLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="20.0" maxWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>
