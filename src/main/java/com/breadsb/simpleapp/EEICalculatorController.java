@@ -35,7 +35,6 @@ public class EEICalculatorController {
     private void changeStyleOfEnergeticEfficiencyClass(EnergeticClass eec, String colour) {
         energeticEfficiencyClass.setText(eec.getEnergeticClass());
         energeticEfficiencyClass.getStyleClass().clear();
-        energeticEfficiencyClass.setStyle("-fx-background-color: " + colour + ";\n" +
-                "-fx-text-fill: white;");
+        energeticEfficiencyClass.setStyle("-fx-background-color: " + colour + "; -fx-text-fill: white;");
     }
 }
