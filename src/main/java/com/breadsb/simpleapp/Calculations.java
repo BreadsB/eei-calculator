@@ -28,23 +28,23 @@ public class Calculations {
 
     public EnergeticClass checkEnergeticEfficiencyClass(double EEI_Value) {
         if(42.0 > EEI_Value) {
-            return new EnergeticClass("G", "#AE0000");
+            return new EnergeticClass("G", Color.G_CLASS_COLOR);
         } else if (62.0 > EEI_Value) {
-            return new EnergeticClass("F", "#C80000");
+            return new EnergeticClass("F", Color.F_CLASS_COLOR);
         } else if (72.0 > EEI_Value) {
-            return new EnergeticClass("E", "#E00000");
+            return new EnergeticClass("E", Color.E_CLASS_COLOR);
         } else if (77.0 > EEI_Value) {
-            return new EnergeticClass("D", "#FE0000");
+            return new EnergeticClass("D", Color.D_CLASS_COLOR);
         } else if (82.0 > EEI_Value) {
-            return new EnergeticClass("C", "#FF7D01");
+            return new EnergeticClass("C", Color.C_CLASS_COLOR);
         } else if (88.0 > EEI_Value) {
-            return new EnergeticClass("B", "#FECD44");
+            return new EnergeticClass("B", Color.B_CLASS_COLOR);
         } else if (107.0 > EEI_Value) {
-            return new EnergeticClass("A", "#FFFF4D");
+            return new EnergeticClass("A", Color.A_CLASS_COLOR);
         } else if (130.0 > EEI_Value) {
-            return new EnergeticClass("A+", "#A9C800");
+            return new EnergeticClass("A+", Color.A_PLUS_CLASS_COLOR);
         } else if (EEI_Value > 130.0) {
-            return new EnergeticClass("A++", "#00AA01");
+            return new EnergeticClass("A++", Color.A_2PLUS_CLASS_COLOR);
         } else {
             throw new EnergeticClassException();
         }

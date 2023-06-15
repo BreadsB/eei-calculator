@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="500.0" maxWidth="500.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.breadsb.simpleapp.EEICalculatorController">
+<VBox alignment="CENTER" maxHeight="500.0" maxWidth="500.0" spacing="20.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.breadsb.simpleapp.EEICalculatorController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -74,11 +74,14 @@
          </HBox>
       </children>
       <VBox.margin>
-         <Insets bottom="10.0" />
+         <Insets />
       </VBox.margin>
       <padding>
          <Insets bottom="10.0" />
       </padding>
    </StackPane>
-   <Label fx:id="copyrights" />
+   <Label fx:id="copyrights" alignment="CENTER" textAlignment="CENTER">
+      <font>
+         <Font size="14.0" />
+      </font></Label>
 </VBox>
