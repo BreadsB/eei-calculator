@@ -1,30 +1,37 @@
 package com.breadsb.simpleapp;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
-import java.io.IOException;
+import java.util.Arrays;
 
 public class EEICalculatorController {
-    public TextField nominalefficiencyfield;
-    public TextField biomasscoefficientfield;
+    public TextField nominalEfficiencyField;
+    public TextField biomassCoefficientField;
     public TextField parameterF2Field;
-    public Label eeitext;
+    public Label eeiLabel;
+    public Label energeticEfficiencyClass;
     Calculations calculations = new Calculations();
 
     @FXML
     protected void onCalculateButtonClick() {
         try {
-            double nominalEfficiencyValue = calculations.check_ifTextFieldNotEmpty_returnCommaConvertion(nominalefficiencyfield);
-            double biomassEfficientValue = calculations.check_ifTextFieldNotEmpty_returnCommaConvertion(biomasscoefficientfield);
-            double parameterF2Value = calculations.check_ifTextFieldNotEmpty_returnCommaConvertion(parameterF2Field);
-
-            double result = calculations.calculate_EEI(nominalEfficiencyValue, biomassEfficientValue, parameterF2Value);
-            eeitext.setText(String.format("%.2f", result));
-        } catch (NumberFormatException e) {
-            eeitext.setText("Wrong input value");
-            System.out.println(e.getMessage());
+            double result = calculations.calculateEEIValueFromTextField(nominalEfficiencyField, biomassCoefficientField, parameterF2Field);
+            eeiLabel.setText( String.format("%.2f", result) );
+            EnergeticClass eec = calculations.checkEnergeticEfficiencyClass(result);
+            changeStyleOfEnergeticEfficiencyClass(eec, eec.getColorCode());
+        } catch (NumberFormatException | EnergeticClassException ece) {
+            eeiLabel.setText("Wrong input value");
+            System.out.println("Error at: " + ece.getCause());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("ERROR: Please check again input values!");
+            alert.showAndWait();
         }
+    }
+
+    private void changeStyleOfEnergeticEfficiencyClass(EnergeticClass eec, String colour) {
+        energeticEfficiencyClass.setText(eec.getEnergeticClass());
+        energeticEfficiencyClass.getStyleClass().clear();
+        energeticEfficiencyClass.setStyle("-fx-background-color: " + colour + "; -fx-text-fill: white;");
     }
 }

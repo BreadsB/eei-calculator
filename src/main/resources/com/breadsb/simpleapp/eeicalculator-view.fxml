@@ -3,26 +3,85 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="500.0" maxWidth="500.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.breadsb.simpleapp.EEICalculatorController">
+<VBox alignment="CENTER" maxHeight="500.0" maxWidth="500.0" spacing="20.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.breadsb.simpleapp.EEICalculatorController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <Pane prefHeight="53.0">
-        <Label alignment="CENTER" layoutX="5.0" layoutY="15.0" prefHeight="20.0" text="Sprawność nominalna" textAlignment="CENTER" />
-        <TextField fx:id="nominalefficiencyfield" layoutX="126.0" layoutY="12.0" prefHeight="25.0" />
-    </Pane>
-    <Pane prefHeight="53.0">
-        <Label alignment="CENTER" layoutY="15.0" prefHeight="20.0" text="Współczynnik biomasy" textAlignment="CENTER" />
-        <TextField fx:id="biomasscoefficientfield" layoutX="126.0" layoutY="12.0" prefHeight="25.0" />
-    </Pane>
-    <Pane prefHeight="53.0">
-        <Label alignment="CENTER" layoutX="30.0" layoutY="15.0" prefHeight="20.0" text="Parametr F2" textAlignment="CENTER" />
-        <TextField fx:id="parameterF2Field" layoutX="126.0" layoutY="12.0" prefHeight="25.0" />
-    </Pane>
-    <Button onAction="#onCalculateButtonClick" text="Calculate" />
-    <Pane prefHeight="30.0">
-        <Label layoutX="20.0" layoutY="5.0" text="Współczynnik EEI: " />
-        <Label fx:id="eeitext" layoutX="140.0" layoutY="5.0" prefHeight="17.0" />
-    </Pane>
+   <StackPane maxWidth="300.0">
+      <children>
+         <HBox alignment="CENTER" maxHeight="30.0" maxWidth="300.0">
+            <children>
+                 <Label alignment="CENTER" prefWidth="150.0" text="Sprawność nominalna" textAlignment="CENTER" />
+                 <TextField fx:id="nominalEfficiencyField" maxWidth="150.0" prefHeight="25.0" prefWidth="150.0" />
+            </children>
+         </HBox>
+      </children>
+   </StackPane>
+   <StackPane maxWidth="300.0">
+      <children>
+         <HBox alignment="CENTER" maxHeight="30.0" maxWidth="300.0">
+            <children>
+                 <Label alignment="CENTER" prefWidth="150.0" text="Współczynnik biomasy" textAlignment="CENTER" />
+                 <TextField fx:id="biomassCoefficientField" maxWidth="150.0" prefHeight="25.0" prefWidth="150.0" />
+            </children>
+         </HBox>
+      </children>
+   </StackPane>
+   <StackPane maxWidth="300.0">
+      <children>
+         <HBox alignment="CENTER" maxHeight="30.0" maxWidth="300.0">
+            <children>
+                 <Label alignment="CENTER" prefWidth="150.0" text="Parametr F2" textAlignment="CENTER" />
+                 <TextField fx:id="parameterF2Field" maxWidth="150.0" prefHeight="25.0" prefWidth="150.0" />
+            </children>
+         </HBox>
+      </children>
+   </StackPane>
+    <Button onAction="#onCalculateButtonClick" text="Oblicz" />
+   <StackPane style="-fx-border-width: 0 0 2 0; -fx-border-color: black;">
+      <children>
+         <HBox alignment="CENTER">
+            <children>
+                 <Label text="Współczynnik EEI: ">
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+               </Label>
+                 <Label fx:id="eeiLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="20.0" maxWidth="100.0" prefHeight="20.0" prefWidth="100.0">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+               </Label>
+               <Label prefHeight="40.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;" text="Klasa efektywności energetycznej" textAlignment="CENTER" wrapText="true">
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </Label>
+               <Label fx:id="energeticEfficiencyClass" alignment="CENTER" contentDisplay="RIGHT" layoutX="223.0" layoutY="10.0" prefHeight="20.0" prefWidth="70.0" textAlignment="CENTER" wrapText="true">
+                  <font>
+                     <Font name="System Bold" size="25.0" />
+                  </font>
+               </Label>
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+         </HBox>
+      </children>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+      <padding>
+         <Insets bottom="10.0" />
+      </padding>
+   </StackPane>
+   <Label fx:id="copyrights" alignment="CENTER" textAlignment="CENTER">
+      <font>
+         <Font size="14.0" />
+      </font></Label>
 </VBox>
