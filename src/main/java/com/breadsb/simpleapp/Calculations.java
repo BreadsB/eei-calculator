@@ -2,8 +2,6 @@ package com.breadsb.simpleapp;
 
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
-
 public class Calculations {
 
     public String convertCommaToDot(String text) {
@@ -28,27 +26,27 @@ public class Calculations {
         return convertTextFieldToDouble(textField.getText());
     }
 
-    public String checkEnergeticEfficiencyClass(double EEI_Value) {
+    public EnergeticClass checkEnergeticEfficiencyClass(double EEI_Value) {
         if(42.0 > EEI_Value) {
-            return "G";
+            return new EnergeticClass("G", "#AE0000");
         } else if (62.0 > EEI_Value) {
-            return "F";
+            return new EnergeticClass("F", "#C80000");
         } else if (72.0 > EEI_Value) {
-            return "E";
+            return new EnergeticClass("E", "#E00000");
         } else if (77.0 > EEI_Value) {
-            return "D";
+            return new EnergeticClass("D", "#FE0000");
         } else if (82.0 > EEI_Value) {
-            return "C";
+            return new EnergeticClass("C", "#FF7D01");
         } else if (88.0 > EEI_Value) {
-            return "B";
+            return new EnergeticClass("B", "#FECD44");
         } else if (107.0 > EEI_Value) {
-            return "A";
+            return new EnergeticClass("A", "#FFFF4D");
         } else if (130.0 > EEI_Value) {
-            return "A+";
+            return new EnergeticClass("A+", "#A9C800");
         } else if (EEI_Value > 130.0) {
-            return "A++";
+            return new EnergeticClass("A++", "#00AA01");
         } else {
-            return "No grade found, check all input values";
+            throw new EnergeticClassException();
         }
     }
 }

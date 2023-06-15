@@ -39,8 +39,8 @@
          </HBox>
       </children>
    </StackPane>
-    <Button onAction="#onCalculateButtonClick" text="Calculate" />
-   <StackPane>
+    <Button onAction="#onCalculateButtonClick" text="Oblicz" />
+   <StackPane style="-fx-border-width: 0 0 2 0; -fx-border-color: black;">
       <children>
          <HBox alignment="CENTER">
             <children>
@@ -57,12 +57,12 @@
                      <Insets />
                   </HBox.margin>
                </Label>
-               <Label prefHeight="40.0" prefWidth="120.0" text="Klasa efektywności energetycznej" textAlignment="CENTER" wrapText="true">
+               <Label prefHeight="40.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-width: 0 0 0 1;" text="Klasa efektywności energetycznej" textAlignment="CENTER" wrapText="true">
                   <HBox.margin>
                      <Insets left="10.0" />
                   </HBox.margin>
                </Label>
-               <Label fx:id="energeticEfficiencyClass" alignment="CENTER" contentDisplay="RIGHT" layoutX="223.0" layoutY="10.0" prefHeight="20.0" prefWidth="70.0" textAlignment="CENTER" textFill="#73ff00" wrapText="true">
+               <Label fx:id="energeticEfficiencyClass" alignment="CENTER" contentDisplay="RIGHT" layoutX="223.0" layoutY="10.0" prefHeight="20.0" prefWidth="70.0" textAlignment="CENTER" wrapText="true">
                   <font>
                      <Font name="System Bold" size="25.0" />
                   </font>
@@ -73,5 +73,12 @@
             </opaqueInsets>
          </HBox>
       </children>
+      <VBox.margin>
+         <Insets bottom="10.0" />
+      </VBox.margin>
+      <padding>
+         <Insets bottom="10.0" />
+      </padding>
    </StackPane>
+   <Label fx:id="copyrights" />
 </VBox>

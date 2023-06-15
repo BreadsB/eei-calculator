@@ -15,6 +15,7 @@ public class EEICalculatorController {
     public Label energeticEfficiencyClass;
     Calculations calculations = new Calculations();
 
+
     @FXML
     protected void onCalculateButtonClick() {
         try {
@@ -24,19 +25,18 @@ public class EEICalculatorController {
 
             double result = calculations.calculate_EEI(nominalEfficiencyValue, biomassEfficientValue, parameterF2Value);
             eeitext.setText(String.format("%.2f", result));
-            String eec = calculations.checkEnergeticEfficiencyClass(result);
-            energeticEfficiencyClass.setText(eec);
-            changeStyleOfEnergeticEfficiencyClass();
-        } catch (NumberFormatException e) {
+            EnergeticClass eec = calculations.checkEnergeticEfficiencyClass(result);
+            energeticEfficiencyClass.setText(eec.getEnergeticClass());
+            changeStyleOfEnergeticEfficiencyClass(eec.getColour(), 5);
+        } catch (NumberFormatException | EnergeticClassException e) {
             eeitext.setText("Wrong input value");
-            System.out.println(e.getMessage());
+            System.out.println("Error at: " + e.getCause());
         }
     }
 
-    private void changeStyleOfEnergeticEfficiencyClass() {
-        energeticEfficiencyClass.getStyleClass().add("-fx-border-color: #73ff00");
-        energeticEfficiencyClass.getStyleClass().add("-fx-border-width: 5px");
-        energeticEfficiencyClass.getStyleClass().add("-fx-border-radius: 5px");
-        energeticEfficiencyClass.getStyleClass().add("-fx-text-fill: #73ff00");
+    private void changeStyleOfEnergeticEfficiencyClass(String colour, int pixels) {
+        energeticEfficiencyClass.getStyleClass().clear();
+        energeticEfficiencyClass.setStyle("-fx-background-color: " + colour + ";\n" +
+                "-fx-text-fill: white;");
     }
 }
