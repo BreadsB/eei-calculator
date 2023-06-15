@@ -3,6 +3,7 @@ package com.breadsb.simpleapp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Border;
 
 import java.io.IOException;
 
@@ -26,5 +27,6 @@ public class EEICalculatorController {
             eeitext.setText("Wrong input value");
             System.out.println(e.getMessage());
         }
+//        eeitext.setBorder();
     }
 }
