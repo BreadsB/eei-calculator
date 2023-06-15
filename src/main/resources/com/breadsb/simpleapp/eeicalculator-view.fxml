@@ -57,17 +57,14 @@
                      <Insets />
                   </HBox.margin>
                </Label>
-               <Label fx:id="eeitext1" prefHeight="40.0" prefWidth="120.0" text="Klasa efektywności energetycznej" textAlignment="CENTER" wrapText="true">
+               <Label prefHeight="40.0" prefWidth="120.0" text="Klasa efektywności energetycznej" textAlignment="CENTER" wrapText="true">
                   <HBox.margin>
                      <Insets left="10.0" />
                   </HBox.margin>
                </Label>
-               <Label fx:id="eeitext11" contentDisplay="CENTER" layoutX="223.0" layoutY="10.0" prefHeight="20.0" prefWidth="20.0" text="A" textAlignment="CENTER" textFill="#73ff00" wrapText="true">
-                  <padding>
-                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                  </padding>
+               <Label fx:id="energeticEfficiencyClass" alignment="CENTER" contentDisplay="RIGHT" layoutX="223.0" layoutY="10.0" prefHeight="20.0" prefWidth="70.0" textAlignment="CENTER" textFill="#73ff00" wrapText="true">
                   <font>
-                     <Font size="32.0" />
+                     <Font name="System Bold" size="25.0" />
                   </font>
                </Label>
             </children>

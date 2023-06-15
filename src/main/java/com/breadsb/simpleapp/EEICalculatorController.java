@@ -12,6 +12,7 @@ public class EEICalculatorController {
     public TextField biomasscoefficientfield;
     public TextField parameterF2Field;
     public Label eeitext;
+    public Label energeticEfficiencyClass;
     Calculations calculations = new Calculations();
 
     @FXML
@@ -23,10 +24,19 @@ public class EEICalculatorController {
 
             double result = calculations.calculate_EEI(nominalEfficiencyValue, biomassEfficientValue, parameterF2Value);
             eeitext.setText(String.format("%.2f", result));
+            String eec = calculations.checkEnergeticEfficiencyClass(result);
+            energeticEfficiencyClass.setText(eec);
+            changeStyleOfEnergeticEfficiencyClass();
         } catch (NumberFormatException e) {
             eeitext.setText("Wrong input value");
             System.out.println(e.getMessage());
         }
-//        eeitext.setBorder();
+    }
+
+    private void changeStyleOfEnergeticEfficiencyClass() {
+        energeticEfficiencyClass.getStyleClass().add("-fx-border-color: #73ff00");
+        energeticEfficiencyClass.getStyleClass().add("-fx-border-width: 5px");
+        energeticEfficiencyClass.getStyleClass().add("-fx-border-radius: 5px");
+        energeticEfficiencyClass.getStyleClass().add("-fx-text-fill: #73ff00");
     }
 }
