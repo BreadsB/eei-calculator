@@ -3,8 +3,6 @@ package com.breadsb.simpleapp;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.util.Arrays;
-
 public class EEICalculatorController {
     public TextField nominalEfficiencyField;
     public TextField biomassCoefficientField;
@@ -22,10 +20,7 @@ public class EEICalculatorController {
             changeStyleOfEnergeticEfficiencyClass(eec, eec.getColorCode());
         } catch (NumberFormatException | EnergeticClassException ece) {
             eeiLabel.setText("Wrong input value");
-            System.out.println("Error at: " + ece.getCause());
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("ERROR: Please check again input values!");
-            alert.showAndWait();
+            createAndShowAlert();
         }
     }
 
@@ -34,4 +29,12 @@ public class EEICalculatorController {
         energeticEfficiencyClass.getStyleClass().clear();
         energeticEfficiencyClass.setStyle("-fx-background-color: " + colour + "; -fx-text-fill: white;");
     }
+
+    private void createAndShowAlert() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("ERROR: Please check again input values!");
+        alert.showAndWait();
+    }
+
+
 }
