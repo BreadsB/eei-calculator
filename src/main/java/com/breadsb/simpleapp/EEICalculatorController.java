@@ -2,8 +2,10 @@ package com.breadsb.simpleapp;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
 
-import java.time.LocalDate;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class EEICalculatorController {
@@ -59,6 +61,12 @@ public class EEICalculatorController {
 
     private void generatePDF() {
         LocalDateTime ldt = LocalDateTime.now();
-
+        try (PDDocument document = new PDDocument()) {
+            PDPage blankPage = new PDPage();
+            document.addPage(blankPage);
+            document.save("eei_report.pdf");
+        } catch (Exception e) {
+            createAndShowAlert("Check filename");
+        }
     }
 }

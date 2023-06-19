@@ -6,6 +6,7 @@ module com.breadsb.simpleapp {
     requires com.dlsc.formsfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
+    requires org.apache.pdfbox;
 
     opens com.breadsb.simpleapp to javafx.fxml;
     exports com.breadsb.simpleapp;
