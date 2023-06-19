@@ -75,8 +75,12 @@ public class EEICalculatorController {
             PDPageContentStream stream = new PDPageContentStream(document, blankPage);
             stream.setFont(PDType1Font.COURIER, 12);
             stream.beginText();
+            stream.setLeading(45);
+            stream.newLineAtOffset(50, 700);
             stream.showText("Product name: " + productNameField.getText());
+            stream.newLine();
             stream.showText("Energetic efficiency index: " + eeiLabel.getText());
+            stream.newLine();
             stream.showText("Report published: " + ldt);
             stream.endText();
             stream.close();
@@ -89,5 +93,8 @@ public class EEICalculatorController {
             createAndShowAlert("Error");
             System.out.println("Check at: " + e.getMessage());
         }
+//        https://pdfbox.apache.org/2.0/examples.html
+//        https://svn.apache.org/viewvc/pdfbox/trunk/examples/src/main/java/org/apache/pdfbox/examples/pdmodel/
+
     }
 }
