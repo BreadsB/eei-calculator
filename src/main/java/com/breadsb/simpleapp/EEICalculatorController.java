@@ -2,8 +2,12 @@ package com.breadsb.simpleapp;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.text.Font;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -36,6 +40,9 @@ public class EEICalculatorController {
 
     private void enablePDFButton() {
         generatePDFButton.setDisable(false);
+        generatePDFButton.setOnMouseClicked(event -> {
+            onGeneratePDFButtonClick();
+        });
     }
 
     private void changeStyleOfEnergeticEfficiencyClass(EnergeticClass eec, String colour) {
@@ -64,9 +71,23 @@ public class EEICalculatorController {
         try (PDDocument document = new PDDocument()) {
             PDPage blankPage = new PDPage();
             document.addPage(blankPage);
+
+            PDPageContentStream stream = new PDPageContentStream(document, blankPage);
+            stream.setFont(PDType1Font.COURIER, 12);
+            stream.beginText();
+            stream.showText("Product name: " + productNameField.getText());
+            stream.showText("Energetic efficiency index: " + eeiLabel.getText());
+            stream.showText("Report published: " + ldt);
+            stream.endText();
+            stream.close();
             document.save("eei_report.pdf");
+            document.close();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Raport generated at: " + document.getDocumentInformation());
+            alert.showAndWait();
         } catch (Exception e) {
-            createAndShowAlert("Check filename");
+            createAndShowAlert("Error");
+            System.out.println("Check at: " + e.getMessage());
         }
     }
 }
