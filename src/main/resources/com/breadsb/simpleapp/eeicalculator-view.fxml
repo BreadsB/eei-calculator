@@ -11,12 +11,12 @@
     </padding>
    <HBox alignment="CENTER" maxWidth="300.0">
       <children>
-         <Label fx:id="productNameField" alignment="CENTER" prefWidth="150.0" text="Nazwa produktu" textAlignment="CENTER">
+         <Label alignment="CENTER" prefWidth="150.0" text="Nazwa produktu" textAlignment="CENTER">
             <HBox.margin>
                <Insets />
             </HBox.margin>
          </Label>
-         <TextField maxWidth="150.0" prefWidth="150.0" />
+         <TextField fx:id="productNameField" maxWidth="150.0" prefWidth="150.0" />
       </children>
    </HBox>
    <StackPane maxWidth="300.0">

@@ -2,14 +2,13 @@ package com.breadsb.simpleapp;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.text.Font;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import java.awt.Desktop;
 
-import java.io.IOException;
+import java.io.File;
 import java.time.LocalDateTime;
 
 public class EEICalculatorController {
@@ -19,7 +18,7 @@ public class EEICalculatorController {
     public Label eeiLabel;
     public Label energeticEfficiencyClass;
     public Button generatePDFButton;
-    public Label productNameField;
+    public TextField productNameField;
     Calculations calculations = new Calculations();
     private boolean isEEICalculated = false;
 
@@ -63,7 +62,6 @@ public class EEICalculatorController {
         } else {
             createAndShowAlert("Product name is empty. Please fill field");
         }
-//        Generate PDF
     }
 
     private void generatePDF() {
@@ -72,6 +70,7 @@ public class EEICalculatorController {
             PDPage blankPage = new PDPage();
             document.addPage(blankPage);
 
+            File file = new File("eei_report.pdf");
             PDPageContentStream stream = new PDPageContentStream(document, blankPage);
             stream.setFont(PDType1Font.COURIER, 12);
             stream.beginText();
@@ -84,11 +83,14 @@ public class EEICalculatorController {
             stream.showText("Report published: " + ldt);
             stream.endText();
             stream.close();
-            document.save("eei_report.pdf");
+            document.save(file);
             document.close();
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Raport generated at: " + document.getDocumentInformation());
             alert.showAndWait();
+            Desktop desktop = Desktop.getDesktop();
+            desktop.open(file);
+
         } catch (Exception e) {
             createAndShowAlert("Error");
             System.out.println("Check at: " + e.getMessage());
