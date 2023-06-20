@@ -6,9 +6,11 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
 import java.awt.Desktop;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class EEICalculatorController {
@@ -26,7 +28,7 @@ public class EEICalculatorController {
     protected void onCalculateButtonClick() {
         try {
             double result = calculations.calculateEEIValueFromTextField(nominalEfficiencyField, biomassCoefficientField, parameterF2Field);
-            eeiLabel.setText( String.format("%.2f", result) );
+            eeiLabel.setText(String.format("%.2f", result));
             EnergeticClass eec = calculations.checkEnergeticEfficiencyClass(result);
             changeStyleOfEnergeticEfficiencyClass(eec, eec.getColorCode());
             enablePDFButton();
@@ -57,7 +59,7 @@ public class EEICalculatorController {
     }
 
     private void onGeneratePDFButtonClick() {
-        if(!productNameField.getText().isBlank()) {
+        if (!productNameField.getText().isBlank()) {
             generatePDF();
         } else {
             createAndShowAlert("Product name is empty. Please fill field");
@@ -69,34 +71,39 @@ public class EEICalculatorController {
         try (PDDocument document = new PDDocument()) {
             PDPage blankPage = new PDPage();
             document.addPage(blankPage);
-
             File file = new File("eei_report.pdf");
+
             PDPageContentStream stream = new PDPageContentStream(document, blankPage);
-            stream.setFont(PDType1Font.COURIER, 12);
-            stream.beginText();
-            stream.setLeading(45);
-            stream.newLineAtOffset(50, 700);
-            stream.showText("Product name: " + productNameField.getText());
-            stream.newLine();
-            stream.showText("Energetic efficiency index: " + eeiLabel.getText());
-            stream.newLine();
-            stream.showText("Report published: " + ldt);
-            stream.endText();
-            stream.close();
+            textInPDF(stream, "Product name: " + productNameField.getText(), "Energetic efficiency index: " + eeiLabel.getText(), "Report published: " + ldt);
             document.save(file);
             document.close();
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Raport generated at: " + document.getDocumentInformation());
             alert.showAndWait();
             Desktop desktop = Desktop.getDesktop();
             desktop.open(file);
-
         } catch (Exception e) {
-            createAndShowAlert("Error");
+            createAndShowAlert("Error at generating PDF");
             System.out.println("Check at: " + e.getMessage());
         }
-//        https://pdfbox.apache.org/2.0/examples.html
-//        https://svn.apache.org/viewvc/pdfbox/trunk/examples/src/main/java/org/apache/pdfbox/examples/pdmodel/
+    }
 
+    private void textInPDF(PDPageContentStream pdPageContentStream, String... args) {
+        try {
+            pdPageContentStream.beginText();
+            pdPageContentStream.setFont(PDType1Font.COURIER, 12);
+            pdPageContentStream.setLeading(45);
+            pdPageContentStream.newLineAtOffset(50, 700);
+
+            for (String text : args) {
+                pdPageContentStream.showText(text);
+                pdPageContentStream.newLine();
+            }
+            pdPageContentStream.endText();
+            pdPageContentStream.close();
+        } catch (IOException e) {
+            createAndShowAlert("No text");
+        }
     }
 }
