@@ -5,10 +5,20 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="500.0" maxWidth="500.0" spacing="20.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.breadsb.simpleapp.EEICalculatorController">
+<VBox alignment="CENTER" maxHeight="500.0" maxWidth="500.0" spacing="20.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.breadsb.eeicalculator.EEICalculatorController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+   <HBox alignment="CENTER" maxWidth="300.0">
+      <children>
+         <Label alignment="CENTER" prefWidth="150.0" text="Nazwa produktu" textAlignment="CENTER">
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+         </Label>
+         <TextField fx:id="productNameField" maxWidth="150.0" prefWidth="150.0" />
+      </children>
+   </HBox>
    <StackPane maxWidth="300.0">
       <children>
          <HBox alignment="CENTER" maxHeight="30.0" maxWidth="300.0">
@@ -39,7 +49,12 @@
          </HBox>
       </children>
    </StackPane>
-    <Button onAction="#onCalculateButtonClick" text="Oblicz" />
+   <HBox alignment="CENTER" spacing="20.0">
+      <children>
+          <Button onAction="#onCalculateButtonClick" text="Oblicz" />
+         <Button fx:id="generatePDFButton" disable="true" mnemonicParsing="false" text="Generuj raport PDF" textAlignment="CENTER" />
+      </children>
+   </HBox>
    <StackPane style="-fx-border-width: 0 0 2 0; -fx-border-color: black;">
       <children>
          <HBox alignment="CENTER">

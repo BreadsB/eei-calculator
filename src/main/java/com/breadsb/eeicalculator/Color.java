@@ -1,4 +1,4 @@
-package com.breadsb.simpleapp;
+package com.breadsb.eeicalculator;
 
 public enum Color {
     G_CLASS_COLOR,

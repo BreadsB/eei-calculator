@@ -1,4 +1,4 @@
-package com.breadsb.simpleapp;
+package com.breadsb.eeicalculator;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

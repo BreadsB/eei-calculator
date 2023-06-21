@@ -1,4 +1,4 @@
-package com.breadsb.simpleapp;
+package com.breadsb.eeicalculator;
 
 import java.util.Objects;
 

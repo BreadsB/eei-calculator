@@ -1,12 +1,9 @@
-module com.breadsb.simpleapp {
+module com.breadsb.eeicalculator {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
+    requires org.apache.pdfbox;
 
-    requires org.controlsfx.controls;
-    requires com.dlsc.formsfx;
-    requires org.kordamp.ikonli.javafx;
-    requires org.kordamp.bootstrapfx.core;
-
-    opens com.breadsb.simpleapp to javafx.fxml;
-    exports com.breadsb.simpleapp;
+    opens com.breadsb.eeicalculator to javafx.fxml;
+    exports com.breadsb.eeicalculator;
 }
